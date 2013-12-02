@@ -23,7 +23,9 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "socket.io": "*"
+    "socket.io": "*",
+    "serialport":"*"
+
   },
   "keywords": []
 }
