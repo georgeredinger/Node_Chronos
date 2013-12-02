@@ -1,0 +1,29 @@
+{
+  "name": "Chronos",
+  "description": "TI ezChronos watch acceleration catcher ",
+  "version": "0.1.0",
+  "homepage": "https://github.com/georgeredinger/NodeChronos",
+  "author": {
+    "name": "George Redinger",
+    "email": "george@georgeredinger.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/georgeredinger/NodeChronos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/georgeredinger/NodeChronos/issues"
+  },
+
+  "main": "lib/NodeChronos",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "socket.io": "*"
+  },
+  "keywords": []
+}

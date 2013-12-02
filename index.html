@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UDP Sensor</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://192.168.1.18');
+    socket.on("accel", function (data) {
+        $("#xy").text(data.x+","+data.y);
+        console.log(data);
+    });
+</script>
+</head>
+<body>
+<H1> UDP sensor </H1>
+<div id="xy"> Waiting for data... </div>
+</body>
+</html>
