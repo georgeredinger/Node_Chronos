@@ -25,7 +25,7 @@ baudrate: 115200
 
     io.sockets.on('connection', function (socket) {
         server.on('message', function (message, remote) {
-            console.log(remote.address + ':' + remote.port +' - ' + message);
+            console.log( message);
             var accel =  {x:0,y:0};
             accel = JSON.parse(message);
             console.log(accel);
@@ -34,17 +34,23 @@ baudrate: 115200
 
     });
 
-    serialPort.open(function () {
-        console.log('open');
-        serialPort.on('data', function(data) {
-            console.log('data received: ' + data);
-        });
-        serialPort.write("ls\n", function(err, results) {
-            console.log('err ' + err);
-            console.log('results ' + results);
-        });
-    });
+    serialPort.on('open',function() {
+        console.log('Port open');
+        serialPort.write(start,function(err,results) {
+            console.log("starting |" + err + "|" + results);
+            serialPort.write(start,function(err,results){
+                console.log("first request |"+err+"|"+results);
+            });
+        }); 
 
+});
+
+serialPort.on('data', function(data) {
+  console.log(data);
+  serialPort.write(request,function(err,results){
+        console.log("next request |"+err+"|"+results);
+     });
+});
 
 
 //   def startAccessPoint():$
