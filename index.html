@@ -5,15 +5,15 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io.connect('http://192.168.1.18');
+  var socket = io.connect('http://192.168.1.100');
     socket.on("accel", function (data) {
-        $("#xy").text(data.x+","+data.y);
+        $("#xyz").text(data.x+","+data.y+","+data.z);
         console.log(data);
     });
 </script>
 </head>
 <body>
-<H1> UDP sensor </H1>
-<div id="xy"> Waiting for data... </div>
+<H1> Chronos accelerometer </H1>
+<div id="xyz"> Waiting for data... </div>
 </body>
 </html>
