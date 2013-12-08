@@ -21,25 +21,37 @@ process.stdin.resume();
 
 app.listen(3000);
 
-//	process.stdin.on('data', function(data) {
-//		console.log("rraw:"+data);
-////		var accel=  {x:getRan(),y:getRan(),z:getRan()};
-//		var accel = JSON.parse(data);
-//		console.log("ccooked:"+accel);
-//	});
+
+
 
 function handler (req, res) {
-	fs.readFile(__dirname + '/index.html',
-							function (err, data) {
-								if (err) {
-									res.writeHead(500);
-									return res.end('Error loading index.html');
-								}
+        if(req.url == "/smoothie.js") {
+                fs.readFile(__dirname + '/smoothie.js',
+                                                                function (err, data) {
+                                                                        if (err) {
+                                                                                res.writeHead(500);
+                                                                                return res.end('Error loading index.html');
+                                                                        }
 
-								res.writeHead(200);
-								res.end(data);
-							});
+                                                                        res.writeHead(200);
+                                                                        res.end(data);
+                                                                });
+        } else {
+                fs.readFile(__dirname + '/index.html',
+                                                                function (err, data) {
+                                                                        if (err) {
+                                                                                res.writeHead(500);
+                                                                                return res.end('Error loading index.html');
+                                                                        }
+
+                                                                        res.writeHead(200);
+                                                                        res.end(data);
+                                                                });
+        }
 }
+
+
+
 
 io.sockets.on('connection', function (socket) {
 	console.log("got socket connection");
