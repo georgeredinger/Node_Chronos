@@ -28,6 +28,13 @@ ser = serial.Serial("/dev/ttyACM0",115200,timeout=1)
 ser.write(startAccessPoint())
  
  
+
+def signedByte(b):
+  if b > 127:
+      return -(b-127)
+  else:
+      return b 
+ 
 while True:
     #Send request for acceleration data
     time.sleep(.1);
@@ -35,9 +42,8 @@ while True:
     accel = ser.read(7)
     if(len(accel)>3):
        if ord(accel[0]) != 0 and ord(accel[1]) != 0 and ord(accel[2]) != 0:
-				 print "{\"x\":" + str(ord(accel[0])) + ",\"y\":" + str(ord(accel[1])) + ",\"z\":" + str(ord(accel[2]))+"}"
-				 sys.stdout.flush()
+          print "{\"x\":" + str(signedByte(ord(accel[0]))) + ",\"y\":" + str(signedByte(ord(accel[1]))) + ",\"z\":" + str(signedByte(ord(accel[2])))+"}"
+          sys.stdout.flush()
 #{"x":254,"y":251,"z":192}
 
-   
 ser.close()
