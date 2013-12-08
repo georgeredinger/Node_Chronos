@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>UDP Sensor</title>
+<title>Chronos Accelerometer</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/smoothie.js"></script>
 
 <script>
-  var socket = io.connect('http://192.168.1.100');
+  var socket = io.connect('http://localhost');
     socket.on("accel", function (data) {
         $("#xyz").text(data.x+","+data.y+","+data.z);
 	      xchart.append(new Date().getTime(), data.x);
@@ -32,7 +32,7 @@ function createTimeline() {
 </head>
 <body onload="createTimeline()">
 
-<H1> UDP sensor </H1>
+<H1> Chronos Accelerometer </H1>
 <div id="xyz"> Waiting for data... </div>
 <span style="color:red"> X </span>
 <span style="color:green"> Y </span>

@@ -13,7 +13,7 @@ import serial
 import array
 import time
 import sys
- 
+
 def startAccessPoint():
     return array.array('B', [0xFF, 0x07, 0x03]).tostring()
  

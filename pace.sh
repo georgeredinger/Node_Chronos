@@ -2,5 +2,5 @@
 while read line 
 do
   echo $line
-  sleep .3;
+  sleep .1;
 done < real.json
