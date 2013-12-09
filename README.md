@@ -1,13 +1,7 @@
-Nodejs UDP catch and throw. 
+Nodejs Chronos watch accelerometer plotter. 
 ====
 
-receive UDP packets and push them out over a websocket 
+Node app reads STDIN from accel.py and sends data over a websocket to browser
 ----
 
-Receive JSON data via UDP packet addressed to local hosts IP address
-Send to web browser(s) via websockets
 
-
-Tunnel local host to internet host:
-
-autossh -nNR 8083:localhost:8083 chicago.redinger.me
