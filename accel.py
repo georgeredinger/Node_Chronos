@@ -30,10 +30,9 @@ ser.write(startAccessPoint())
  
 
 def signedByte(b):
-  if b > 127:
-      return -(b-127)
-  else:
-      return b 
+    if b > 127:
+          b -= 256
+    return b 
  
 while True:
     #Send request for acceleration data
@@ -44,6 +43,5 @@ while True:
        if ord(accel[0]) != 0 and ord(accel[1]) != 0 and ord(accel[2]) != 0:
           print "{\"x\":" + str(signedByte(ord(accel[0]))) + ",\"y\":" + str(signedByte(ord(accel[1]))) + ",\"z\":" + str(signedByte(ord(accel[2])))+"}"
           sys.stdout.flush()
-#{"x":254,"y":251,"z":192}
 
 ser.close()
